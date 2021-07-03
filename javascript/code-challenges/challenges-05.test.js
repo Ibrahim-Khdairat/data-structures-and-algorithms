@@ -13,9 +13,9 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   let newArray=[];
-    people.reduce((acc , value) =>{
+    people.map(( value) =>{
       newArray.push(value.firstName+" "+value.lastName)
-    } ,[])
+    })
     return (newArray);
 };
 /* ------------------------------------------------------------------------------------------------
@@ -27,10 +27,10 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 const addValues = (arr) => {
 
-  let result =0 ;
- arr.reduce((acc,value)=>{
-  result = result +value;
-   
+  let result =[];
+result =  arr.reduce((acc,value)=>{
+  acc = acc +value;
+   return acc;
   },0)
   return result;
 };
@@ -47,10 +47,10 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  let result =0 ;
- arr.reduce((acc,value)=>{
-  result = result + value.purchasePrice;
-   
+  let result  =[];
+ result = arr.reduce((acc,value)=>{
+  acc = acc + value.purchasePrice;
+   return acc;
   },0)
   return result;
 };
@@ -64,7 +64,12 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return (
+    arr.reduce( acc => {
+      acc = acc + 1;
+      return acc;
+    }, 0 )
+  )
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,7 +129,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let result = [];
+  arr.reduce((acc , value) => {
+    result.push(value.name);
+  },0)
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,8 +145,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  return str.split('').reduce((acc, value)=> value + acc, '');
+
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
